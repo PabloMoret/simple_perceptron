@@ -1,0 +1,8 @@
+# Compiled
+__pycache__/
+
+# IDE
+.vscode/
+
+# Logs
+*.log
