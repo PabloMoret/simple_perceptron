@@ -3,6 +3,7 @@ __pycache__/
 
 # IDE
 .vscode/
+.vscode/*
 
 # Logs
 *.log
