@@ -6,7 +6,7 @@ import os
 
 logging.basicConfig(filename="runtime.log", level=logging.INFO)
 
-def read_file(file):
+def read_file(file, epochs):
 
     if not os.path.isfile(file):
         logging.error("Error while opening file. Check file path")
@@ -54,4 +54,12 @@ def read_file(file):
 
     f.close()
 
-    return points, tags
+    if(not re.match(r'^\d+$', epochs)):
+        logging.error("Epochs not a valid number. Check it is a natural number greater than 0")
+        raise exceptions.EpochsNotANumberException("Make sure epochs input is a natural number")
+    epochs = int(epochs)
+    if(epochs >= 10000):
+        logging.warning("Epochs number higher than 10k not recomended")
+        print("Epochs number higher than 10k not recomended")
+
+    return points, tags, tags_namespace, dimension, epochs
